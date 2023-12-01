@@ -376,8 +376,6 @@ function property() {
         this.type = this.type.replace(s, this.name)
       })()
 
-      // **Set-only**.
-
       const m = this.type.match(/ \(([\S\s]*)\)>?$/)
       if (m) {
         let [s, d] = m
@@ -396,10 +394,6 @@ function property() {
         }
         this.description += `${p}${d}`
       }
-
-      // This properties doesn't return any data.
-      // This propertie doesn't return any data.
-      // This property doesn't return any data.
 
       p.normalize.call(this)
     },
