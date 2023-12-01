@@ -1,0 +1,8 @@
+{
+  "name": "onlyoffice-demo-docs",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "sade": "^1.8.1"
+  }
+}
