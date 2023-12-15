@@ -2,6 +2,9 @@
   "name": "@onlyoffice-demo-docs/document-builder",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "node ./makefile.js build"
+  },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.4.1",
     "@types/mdast": "^4.0.3",

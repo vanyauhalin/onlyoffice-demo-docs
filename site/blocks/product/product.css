@@ -1,0 +1,93 @@
+.product {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  min-height: 100vh;
+}
+
+.product__main {
+  background-color: var(--color-scale-neutral-1);
+}
+
+.product__inner {
+  display: flex;
+  height: 100%;
+}
+
+.product__main2 {
+  width: 100%;
+  padding-right: calc((100% - 1168px) / 2);
+  background-color: var(--color-scale-white);
+}
+
+.product__inner2 {
+  max-width: 936px;
+  padding: 0 24px;
+}
+
+.product-nav {
+  margin-left: calc((100% - 1168px) / 2);
+  min-width: 232px;
+  padding: 0 24px;
+
+  padding-top: 20px;
+}
+
+.tree {}
+
+.tree__limb {
+  list-style: none;
+  margin: 0;
+  padding-inline-start: 16px;
+}
+
+.tree__limb_bole {
+  padding-inline-start: 0;
+  margin-left: -16px;
+}
+
+.tree__branch {
+  margin-top: 12px;
+}
+
+.tree__branch:first-of-type {
+  margin-top: 0;
+}
+
+.tree__branch_bole {
+  margin-top: 30px;
+}
+
+.tree__twig {}
+
+.tree__twig ~ .tree__limb {
+  margin-top: 12px;
+}
+
+.tree__fruit {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  width: 8px;
+}
+
+.tree__leaf {
+  color: inherit;
+  font-size: 14px;
+  padding-inline-start: 16px;
+  text-decoration: none;
+}
+
+.tree__leaf:hover,
+.tree__leaf:focus {
+  color: var(--color-scale-orange-0);
+}
+
+.tree__leaf_bole {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tree__fruit ~ .tree__leaf {
+  margin-left: 8px;
+  padding-inline-start: 0;
+}

@@ -1,6 +1,12 @@
 
 
 /**
+ * @class
+ * @name Api
+ * @description Class representing a base class.
+ */
+
+/**
  * @memberof Api
  * @name CreateCheckBoxForm
  * @description Creates a checkbox / radio button with the specified checkbox / radio button properties.
@@ -48,20 +54,20 @@
  */
 
 /**
- * @memberof Api
- * @name CreatePictureForm
- * @description Creates a picture form with the specified picture form properties.
- * @returns {ApiPictureForm}
+ * @memberof ApiDocument
+ * @name InsertTextForm
+ * @description Inserts a text box with the specified text box properties over the selected text.
+ * @returns {ApiTextForm}
  * @example
  * builder.CreateFile("docx")
- * const oDocument = Api.GetDocument()
- * const oPictureForm = Api.CreatePictureForm({ "key": "Personal information", "tip": "Upload your photo", "required": true, "placeholder": "Photo", "scaleFlag": "tooBig", "lockAspectRatio": true, "respectBorders": false, "shiftX": 50, "shiftY": 50 })
+ * const oDocument = editor.GetDocument()
  * const oParagraph = oDocument.GetElement(0)
- * oParagraph.AddElement(oPictureForm)
- * oPictureForm.SetImage("https://api.onlyoffice.com/content/img/docbuilder/examples/user-profile.png")
- * builder.SaveFile("docxf", "CreatePictureForm.docxf")
+ * oParagraph.AddText("First name")
+ * oParagraph.Select()
+ * oDocument.InsertTextForm({ "key": "Personal information", "tip": "Enter your first name", "required": true, "placeholder": "Name", "comb": true, "maxCharacters": 10, "cellWidth": 3, "multiLine": false, "autoFit": false, "placeholderFromSelection": true, "keepSelectedTextInForm": false })
+ * builder.SaveFile("docx", "InsertTextForm.docx")
  * builder.CloseFile()
- * @param {PictureFormPr} oFormPr Picture form properties.
+ * @param {TextFormInsertPr} oFormPr Properties for inserting a text field.
  */
 
 /**
@@ -81,25 +87,25 @@
  */
 
 /**
- * @class
- * @global
- * @name ApiDocument
- * @prop {TextFormInsertPr} ApiDocumentoFormPr Properties for inserting a text field.
+ * @memberof Api
+ * @name CreatePictureForm
+ * @description Creates a picture form with the specified picture form properties.
+ * @returns {ApiPictureForm}
+ * @example
+ * builder.CreateFile("docx")
+ * const oDocument = Api.GetDocument()
+ * const oPictureForm = Api.CreatePictureForm({ "key": "Personal information", "tip": "Upload your photo", "required": true, "placeholder": "Photo", "scaleFlag": "tooBig", "lockAspectRatio": true, "respectBorders": false, "shiftX": 50, "shiftY": 50 })
+ * const oParagraph = oDocument.GetElement(0)
+ * oParagraph.AddElement(oPictureForm)
+ * oPictureForm.SetImage("https://api.onlyoffice.com/content/img/docbuilder/examples/user-profile.png")
+ * builder.SaveFile("docxf", "CreatePictureForm.docxf")
+ * builder.CloseFile()
+ * @param {PictureFormPr} oFormPr Picture form properties.
  */
 
 /**
- * @memberof ApiDocument
- * @name InsertTextForm
+ * @class
+ * @name ApiDocument
  * @description Inserts a text box with the specified text box properties over the selected text.
- * @returns {ApiTextForm}
- * @example
- * builder.CreateFile("docx")
- * const oDocument = editor.GetDocument()
- * const oParagraph = oDocument.GetElement(0)
- * oParagraph.AddText("First name")
- * oParagraph.Select()
- * oDocument.InsertTextForm({ "key": "Personal information", "tip": "Enter your first name", "required": true, "placeholder": "Name", "comb": true, "maxCharacters": 10, "cellWidth": 3, "multiLine": false, "autoFit": false, "placeholderFromSelection": true, "keepSelectedTextInForm": false })
- * builder.SaveFile("docx", "InsertTextForm.docx")
- * builder.CloseFile()
- * @param {TextFormInsertPr} oFormPr Properties for inserting a text field.
+ * @prop {TextFormInsertPr} ApiDocumentoFormPr Properties for inserting a text field.
  */

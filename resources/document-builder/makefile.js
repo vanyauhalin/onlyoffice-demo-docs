@@ -92,6 +92,11 @@ make
       const l = ["Events", "Methods", "Properties"]
       await Promise.all(l.map(async (u) => {
         const d = join(r, u)
+        switch (u) {
+          case "Properties":
+            await prepareProperties(def, d)
+            return
+        }
         if (!existsSync(d)) {
           return
         }
@@ -102,9 +107,9 @@ make
           case "Methods":
             await prepareMethods(def, d)
             return
-          case "Properties":
-            await prepareProperties(def, d)
-            return
+          // case "Properties":
+          //   await prepareProperties(def, d)
+          //   return
         }
       }))
     }
@@ -179,24 +184,37 @@ make
     async function prepareProperties(def, r) {
       const pn = dirname(r)
       const c = jsdoc.cls()
-      const g = jsdoc.global()
       const n = jsdoc.name()
       n.content = basename(pn)
-      const buf = [c, g, n]
-      const l = await readdir(r)
-      await Promise.all(l.map(async (n) => {
-        const f = join(r, n)
+      const d = await (async () => {
+        const f = join(pn, `${n.content}.md`)
         const md = await readFile(f)
         const t = fromMarkdown(md, {
           extensions: [gfmTable()],
           mdastExtensions: [gfmTableFromMarkdown()]
         })
-        const p = jsdoc.property()
-        p.name = basename(pn)
-        const b = [p]
+        const d = jsdoc.description()
+        const b = [d]
         jsdoc.parse(t, b)
-        buf.push(...b)
-      }))
+        return d
+      })()
+      const buf = [c, n, d]
+      if (existsSync(r)) {
+        const l = await readdir(r)
+        await Promise.all(l.map(async (n) => {
+          const f = join(r, n)
+          const md = await readFile(f)
+          const t = fromMarkdown(md, {
+            extensions: [gfmTable()],
+            mdastExtensions: [gfmTableFromMarkdown()]
+          })
+          const p = jsdoc.property()
+          p.name = basename(pn)
+          const b = [p]
+          jsdoc.parse(t, b)
+          buf.push(...b)
+        }))
+      }
       def.content += "\n\n/**\n"
       await Promise.all(buf.map(async (u) => {
         u.normalize()

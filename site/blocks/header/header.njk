@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      {% include "blocks/logo/logo.njk" %}
+    </div>
+    <div class="header__nav">
+      <nav class="global-nav">
+        {% for p in collections.products %}
+          <div class="global-nav__container">
+            <!-- todo: global-nav__anchor_current -->
+            <a class="global-nav__anchor" href="{{ p.internal.url }}">{{ p.internal.data.title }}</a>
+          </div>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</header>

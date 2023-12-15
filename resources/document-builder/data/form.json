@@ -1,9 +1,24 @@
 [
     {
-        "comment": "/**\n * @memberof Api\n * @name CreateCheckBoxForm\n * @description Creates a checkbox / radio button with the specified checkbox / radio button properties.\n * @returns {ApiCheckBoxForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = Api.GetDocument()\n * let oCheckBoxForm = Api.CreateCheckBoxForm({ \"key\": \"Marital status\", \"tip\": \"Specify your marital status\", \"required\": true, \"placeholder\": \"Marital status\", \"radio\": true })\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddElement(oCheckBoxForm)\n * oParagraph.AddText(\" Married\")\n * oParagraph.AddLineBreak()\n * oCheckBoxForm = Api.CreateCheckBoxForm({ \"key\": \"Marital status\", \"tip\": \"Specify your marital status\", \"required\": true, \"placeholder\": \"Marital status\", \"radio\": true })\n * oParagraph.AddElement(oCheckBoxForm)\n * oParagraph.AddText(\" Single\")\n * builder.SaveFile(\"docxf\", \"CreateCheckBoxForm.docxf\")\n * builder.CloseFile()\n * @param {CheckBoxFormPr} oFormPr Checkbox | radio button properties.\n */",
+        "comment": "/**\n * @class\n * @name Api\n * @description Class representing a base class.\n */",
         "meta": {
             "filename": "form.js",
             "lineno": 3,
+            "columnno": 0,
+            "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
+            "code": {}
+        },
+        "kind": "class",
+        "name": "Api",
+        "description": "Class representing a base class.",
+        "longname": "Api",
+        "scope": "global"
+    },
+    {
+        "comment": "/**\n * @memberof Api\n * @name CreateCheckBoxForm\n * @description Creates a checkbox / radio button with the specified checkbox / radio button properties.\n * @returns {ApiCheckBoxForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = Api.GetDocument()\n * let oCheckBoxForm = Api.CreateCheckBoxForm({ \"key\": \"Marital status\", \"tip\": \"Specify your marital status\", \"required\": true, \"placeholder\": \"Marital status\", \"radio\": true })\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddElement(oCheckBoxForm)\n * oParagraph.AddText(\" Married\")\n * oParagraph.AddLineBreak()\n * oCheckBoxForm = Api.CreateCheckBoxForm({ \"key\": \"Marital status\", \"tip\": \"Specify your marital status\", \"required\": true, \"placeholder\": \"Marital status\", \"radio\": true })\n * oParagraph.AddElement(oCheckBoxForm)\n * oParagraph.AddText(\" Single\")\n * builder.SaveFile(\"docxf\", \"CreateCheckBoxForm.docxf\")\n * builder.CloseFile()\n * @param {CheckBoxFormPr} oFormPr Checkbox | radio button properties.\n */",
+        "meta": {
+            "filename": "form.js",
+            "lineno": 9,
             "columnno": 0,
             "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
             "code": {}
@@ -42,7 +57,7 @@
         "comment": "/**\n * @memberof Api\n * @name CreateComboBoxForm\n * @description Creates a combo box / dropdown list with the specified combo box / dropdown list properties.\n * @returns {ApiComboBoxForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = Api.GetDocument()\n * const oComboBoxForm = Api.CreateComboBoxForm({ \"key\": \"Personal information\",\n *                                                \"tip\": \"Choose your country\",\n *                                                \"required\": true,\n *                                                \"placeholder\": \"Country\",\n *                                                \"editable\": false,\n *                                                \"autoFit\": false,\n *                                                \"items\": [\n *                                                  \"Latvia\",\n *                                                  \"USA\",\n *                                                  \"UK\"\n *                                                ] })\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddElement(oComboBoxForm)\n * builder.SaveFile(\"docxf\", \"CreateComboBoxForm.docxf\")\n * builder.CloseFile()\n * @param {ComboBoxFormPr} oFormPr Combobox | null dropdown list properties.\n */",
         "meta": {
             "filename": "form.js",
-            "lineno": 24,
+            "lineno": 30,
             "columnno": 0,
             "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
             "code": {}
@@ -78,49 +93,49 @@
         "kind": "member"
     },
     {
-        "comment": "/**\n * @memberof Api\n * @name CreatePictureForm\n * @description Creates a picture form with the specified picture form properties.\n * @returns {ApiPictureForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = Api.GetDocument()\n * const oPictureForm = Api.CreatePictureForm({ \"key\": \"Personal information\", \"tip\": \"Upload your photo\", \"required\": true, \"placeholder\": \"Photo\", \"scaleFlag\": \"tooBig\", \"lockAspectRatio\": true, \"respectBorders\": false, \"shiftX\": 50, \"shiftY\": 50 })\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddElement(oPictureForm)\n * oPictureForm.SetImage(\"https://api.onlyoffice.com/content/img/docbuilder/examples/user-profile.png\")\n * builder.SaveFile(\"docxf\", \"CreatePictureForm.docxf\")\n * builder.CloseFile()\n * @param {PictureFormPr} oFormPr Picture form properties.\n */",
+        "comment": "/**\n * @memberof ApiDocument\n * @name InsertTextForm\n * @description Inserts a text box with the specified text box properties over the selected text.\n * @returns {ApiTextForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = editor.GetDocument()\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddText(\"First name\")\n * oParagraph.Select()\n * oDocument.InsertTextForm({ \"key\": \"Personal information\", \"tip\": \"Enter your first name\", \"required\": true, \"placeholder\": \"Name\", \"comb\": true, \"maxCharacters\": 10, \"cellWidth\": 3, \"multiLine\": false, \"autoFit\": false, \"placeholderFromSelection\": true, \"keepSelectedTextInForm\": false })\n * builder.SaveFile(\"docx\", \"InsertTextForm.docx\")\n * builder.CloseFile()\n * @param {TextFormInsertPr} oFormPr Properties for inserting a text field.\n */",
         "meta": {
             "filename": "form.js",
-            "lineno": 50,
+            "lineno": 56,
             "columnno": 0,
             "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
             "code": {}
         },
-        "memberof": "Api",
-        "name": "CreatePictureForm",
-        "description": "Creates a picture form with the specified picture form properties.",
+        "memberof": "ApiDocument",
+        "name": "InsertTextForm",
+        "description": "Inserts a text box with the specified text box properties over the selected text.",
         "returns": [
             {
                 "type": {
                     "names": [
-                        "ApiPictureForm"
+                        "ApiTextForm"
                     ]
                 }
             }
         ],
         "examples": [
-            "builder.CreateFile(\"docx\")\nconst oDocument = Api.GetDocument()\nconst oPictureForm = Api.CreatePictureForm({ \"key\": \"Personal information\", \"tip\": \"Upload your photo\", \"required\": true, \"placeholder\": \"Photo\", \"scaleFlag\": \"tooBig\", \"lockAspectRatio\": true, \"respectBorders\": false, \"shiftX\": 50, \"shiftY\": 50 })\nconst oParagraph = oDocument.GetElement(0)\noParagraph.AddElement(oPictureForm)\noPictureForm.SetImage(\"https://api.onlyoffice.com/content/img/docbuilder/examples/user-profile.png\")\nbuilder.SaveFile(\"docxf\", \"CreatePictureForm.docxf\")\nbuilder.CloseFile()"
+            "builder.CreateFile(\"docx\")\nconst oDocument = editor.GetDocument()\nconst oParagraph = oDocument.GetElement(0)\noParagraph.AddText(\"First name\")\noParagraph.Select()\noDocument.InsertTextForm({ \"key\": \"Personal information\", \"tip\": \"Enter your first name\", \"required\": true, \"placeholder\": \"Name\", \"comb\": true, \"maxCharacters\": 10, \"cellWidth\": 3, \"multiLine\": false, \"autoFit\": false, \"placeholderFromSelection\": true, \"keepSelectedTextInForm\": false })\nbuilder.SaveFile(\"docx\", \"InsertTextForm.docx\")\nbuilder.CloseFile()"
         ],
         "params": [
             {
                 "type": {
                     "names": [
-                        "PictureFormPr"
+                        "TextFormInsertPr"
                     ]
                 },
-                "description": "Picture form properties.",
+                "description": "Properties for inserting a text field.",
                 "name": "oFormPr"
             }
         ],
         "scope": "static",
-        "longname": "Api.CreatePictureForm",
+        "longname": "ApiDocument.InsertTextForm",
         "kind": "member"
     },
     {
         "comment": "/**\n * @memberof Api\n * @name CreateTextForm\n * @description Creates a text field with the specified text field properties.\n * @returns {ApiTextForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = Api.GetDocument()\n * const oTextForm = Api.CreateTextForm({ \"key\": \"Personal information\", \"tip\": \"Enter your first name\", \"required\": true, \"placeholder\": \"First name\", \"comb\": true, \"maxCharacters\": 10, \"cellWidth\": 3, \"multiLine\": false, \"autoFit\": false })\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddElement(oTextForm)\n * builder.SaveFile(\"docxf\", \"CreateTextForm.docxf\")\n * builder.CloseFile()\n * @param {TextFormPr} oFormPr Text field properties.\n */",
         "meta": {
             "filename": "form.js",
-            "lineno": 67,
+            "lineno": 73,
             "columnno": 0,
             "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
             "code": {}
@@ -156,17 +171,56 @@
         "kind": "member"
     },
     {
-        "comment": "/**\n * @class\n * @global\n * @name ApiDocument\n * @prop {TextFormInsertPr} ApiDocumentoFormPr Properties for inserting a text field.\n */",
+        "comment": "/**\n * @memberof Api\n * @name CreatePictureForm\n * @description Creates a picture form with the specified picture form properties.\n * @returns {ApiPictureForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = Api.GetDocument()\n * const oPictureForm = Api.CreatePictureForm({ \"key\": \"Personal information\", \"tip\": \"Upload your photo\", \"required\": true, \"placeholder\": \"Photo\", \"scaleFlag\": \"tooBig\", \"lockAspectRatio\": true, \"respectBorders\": false, \"shiftX\": 50, \"shiftY\": 50 })\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddElement(oPictureForm)\n * oPictureForm.SetImage(\"https://api.onlyoffice.com/content/img/docbuilder/examples/user-profile.png\")\n * builder.SaveFile(\"docxf\", \"CreatePictureForm.docxf\")\n * builder.CloseFile()\n * @param {PictureFormPr} oFormPr Picture form properties.\n */",
         "meta": {
             "filename": "form.js",
-            "lineno": 83,
+            "lineno": 89,
+            "columnno": 0,
+            "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
+            "code": {}
+        },
+        "memberof": "Api",
+        "name": "CreatePictureForm",
+        "description": "Creates a picture form with the specified picture form properties.",
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "ApiPictureForm"
+                    ]
+                }
+            }
+        ],
+        "examples": [
+            "builder.CreateFile(\"docx\")\nconst oDocument = Api.GetDocument()\nconst oPictureForm = Api.CreatePictureForm({ \"key\": \"Personal information\", \"tip\": \"Upload your photo\", \"required\": true, \"placeholder\": \"Photo\", \"scaleFlag\": \"tooBig\", \"lockAspectRatio\": true, \"respectBorders\": false, \"shiftX\": 50, \"shiftY\": 50 })\nconst oParagraph = oDocument.GetElement(0)\noParagraph.AddElement(oPictureForm)\noPictureForm.SetImage(\"https://api.onlyoffice.com/content/img/docbuilder/examples/user-profile.png\")\nbuilder.SaveFile(\"docxf\", \"CreatePictureForm.docxf\")\nbuilder.CloseFile()"
+        ],
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "PictureFormPr"
+                    ]
+                },
+                "description": "Picture form properties.",
+                "name": "oFormPr"
+            }
+        ],
+        "scope": "static",
+        "longname": "Api.CreatePictureForm",
+        "kind": "member"
+    },
+    {
+        "comment": "/**\n * @class\n * @name ApiDocument\n * @description Inserts a text box with the specified text box properties over the selected text.\n * @prop {TextFormInsertPr} ApiDocumentoFormPr Properties for inserting a text field.\n */",
+        "meta": {
+            "filename": "form.js",
+            "lineno": 106,
             "columnno": 0,
             "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
             "code": {}
         },
         "kind": "class",
-        "scope": "global",
         "name": "ApiDocument",
+        "description": "Inserts a text box with the specified text box properties over the selected text.",
         "properties": [
             {
                 "type": {
@@ -178,46 +232,8 @@
                 "name": "ApiDocumentoFormPr"
             }
         ],
-        "longname": "ApiDocument"
-    },
-    {
-        "comment": "/**\n * @memberof ApiDocument\n * @name InsertTextForm\n * @description Inserts a text box with the specified text box properties over the selected text.\n * @returns {ApiTextForm}\n * @example\n * builder.CreateFile(\"docx\")\n * const oDocument = editor.GetDocument()\n * const oParagraph = oDocument.GetElement(0)\n * oParagraph.AddText(\"First name\")\n * oParagraph.Select()\n * oDocument.InsertTextForm({ \"key\": \"Personal information\", \"tip\": \"Enter your first name\", \"required\": true, \"placeholder\": \"Name\", \"comb\": true, \"maxCharacters\": 10, \"cellWidth\": 3, \"multiLine\": false, \"autoFit\": false, \"placeholderFromSelection\": true, \"keepSelectedTextInForm\": false })\n * builder.SaveFile(\"docx\", \"InsertTextForm.docx\")\n * builder.CloseFile()\n * @param {TextFormInsertPr} oFormPr Properties for inserting a text field.\n */",
-        "meta": {
-            "filename": "form.js",
-            "lineno": 90,
-            "columnno": 0,
-            "path": "/Users/vanyauhalin/self/onlyoffice-demo-docs/resources/document-builder/temp",
-            "code": {}
-        },
-        "memberof": "ApiDocument",
-        "name": "InsertTextForm",
-        "description": "Inserts a text box with the specified text box properties over the selected text.",
-        "returns": [
-            {
-                "type": {
-                    "names": [
-                        "ApiTextForm"
-                    ]
-                }
-            }
-        ],
-        "examples": [
-            "builder.CreateFile(\"docx\")\nconst oDocument = editor.GetDocument()\nconst oParagraph = oDocument.GetElement(0)\noParagraph.AddText(\"First name\")\noParagraph.Select()\noDocument.InsertTextForm({ \"key\": \"Personal information\", \"tip\": \"Enter your first name\", \"required\": true, \"placeholder\": \"Name\", \"comb\": true, \"maxCharacters\": 10, \"cellWidth\": 3, \"multiLine\": false, \"autoFit\": false, \"placeholderFromSelection\": true, \"keepSelectedTextInForm\": false })\nbuilder.SaveFile(\"docx\", \"InsertTextForm.docx\")\nbuilder.CloseFile()"
-        ],
-        "params": [
-            {
-                "type": {
-                    "names": [
-                        "TextFormInsertPr"
-                    ]
-                },
-                "description": "Properties for inserting a text field.",
-                "name": "oFormPr"
-            }
-        ],
-        "scope": "static",
-        "longname": "ApiDocument.InsertTextForm",
-        "kind": "member"
+        "longname": "ApiDocument",
+        "scope": "global"
     },
     {
         "kind": "package",

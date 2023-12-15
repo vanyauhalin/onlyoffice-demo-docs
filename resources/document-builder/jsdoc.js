@@ -531,6 +531,7 @@ function parseRoot(t, b, s, cb) {
     return
   }
   switch (f.tag) {
+    case "description":
     case "event":
     case "memberof":
     case "prop":
@@ -626,9 +627,9 @@ function parseHeading(t, b, s, cb) {
     return
   }
   switch (f.tag) {
-    // case "description":
-    //   parseDescription(t, b, s, cb)
-    //   return
+    case "description":
+      parseDescription(t, b, s, cb)
+      return
     case "event":
       parseEvent(t, b, s, cb)
       return
@@ -642,23 +643,23 @@ function parseHeading(t, b, s, cb) {
       parseProperty(t, b, s, cb)
       return
   }
-  // /**
-  //  * @param {RemarkHeading} t
-  //  * @param {Block} b
-  //  * @param {State} s
-  //  * @param {Callback} cb
-  //  * @returns {void}
-  //  */
-  // function parseDescription(t, b, s, cb) {
-  //   switch (t.depth) {
-  //     case 1:
-  //       s.section = "description"
-  //       return
-  //     case 2:
-  //       s.section = ""
-  //       return
-  //   }
-  // }
+  /**
+   * @param {RemarkHeading} t
+   * @param {Block} b
+   * @param {State} s
+   * @param {Callback} cb
+   * @returns {void}
+   */
+  function parseDescription(t, b, s, cb) {
+    switch (t.depth) {
+      case 1:
+        s.section = "description"
+        return
+      case 2:
+        s.section = ""
+        return
+    }
+  }
   /**
    * @param {RemarkHeading} t
    * @param {Block} b

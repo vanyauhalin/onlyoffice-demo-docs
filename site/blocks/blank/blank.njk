@@ -1,0 +1,12 @@
+---
+layout: blocks/page/page.njk
+---
+<div class="blank">
+  {% include "blocks/header/header.njk" %}
+  <main class="blank__main">
+    <div class="blank__inner">
+      {{ content | safe }}
+    </div>
+  </main>
+  {% include "blocks/footer/footer.njk" %}
+</div>
