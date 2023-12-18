@@ -1,3 +1,5 @@
 module.exports = {
-  tags: ["product"]
+  tags: [
+    "product"
+  ]
 }

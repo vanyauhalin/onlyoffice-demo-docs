@@ -1,0 +1,11 @@
+<tr>
+  <td class="reflection__record">
+    <div class="reflection__container">
+      <p class="reflection__meta">
+        <code class="reflection__tag reflection__tag_name" @text="name"></code>
+        <code class="reflection__tag" @text="type"></code>
+      </p>
+      <p class="reflection__description" @text="description"></p>
+    </div>
+  </td>
+</tr>

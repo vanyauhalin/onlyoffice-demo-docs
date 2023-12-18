@@ -1,0 +1,183 @@
+<style webc:keep>
+.section {
+  margin-top: 24px;
+}
+
+.section:first-of-type {
+  /* margin-top: 0; */
+}
+
+.heading {
+  color: var(--color-scale-orange-0);
+  margin: 0;
+}
+
+.description {
+  font-size: 13px;
+  margin: 24px 0 0 0;
+}
+
+.snippet {
+  border: 1px solid var(--color-scale-gray-1);
+  font-family: var(--text-font-monospace);
+  margin-top: 24px;
+}
+
+.snippet__header {
+  display: flex;
+  background-color: var(--color-scale-neutral-1);
+}
+
+.snippet__tabs {
+  border-right: 1px solid var(--color-scale-gray-1);
+}
+
+.snippet__tab {
+  align-items: center;
+  background-color: var(--color-scale-white);
+  display: flex;
+  font-size: 13px;
+  height: calc(100% - 9px * 2);
+  line-height: 1;
+  padding: 9px 12px;
+}
+
+.snippet__actions {
+  margin-left: auto;
+}
+
+.snippet__action {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 4px;
+}
+
+.snippet__action svg {
+  display: block;
+}
+
+.snippet__body {
+  background-color: var(--color-scale-neutral-0);
+  border-top: 1px solid var(--color-scale-gray-1);
+  font-family: inherit;
+  font-size: 13px;
+  margin: 0;
+  padding: 9px 35px;
+}
+
+.heading2 {
+  background-color: var(--color-scale-neutral-2);
+  color: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  padding: 6px 11px;
+}
+
+.reflection {
+  border-collapse: collapse;
+  font-size: inherit;
+  /* margin-top: 24px; */
+  margin-top: 12px;
+  width: 100%;
+}
+
+.reflection__record {
+  padding: 12px 0;
+}
+
+.reflection__container {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.reflection__meta {
+  display: flex;
+  margin: 0;
+}
+
+.reflection__tag {
+  display: inline-block;
+  font-family: var(--text-font-monospace);
+  font-size: 13px;
+  line-height: 1;
+  margin-left: 8px;
+  padding: 6px 7px;
+}
+
+.reflection__tag:first-child {
+  margin-left: 0;
+}
+
+.reflection__tag_name {
+  /* letter-spacing: 1.3px; */
+  background-color: var(--color-scale-neutral-3);
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.reflection__tag_name + .reflection__tag {
+  /* margin-left: 16px; */
+}
+
+.reflection__tag_required {
+  color: var(--color-scale-red-0);
+  text-transform: lowercase;
+}
+
+.reflection__description {
+  font-size: 13px;
+  margin: 14px 0 0 0;
+}
+</style>
+<template webc:for="c of pagination.items" webc:nokeep>
+  <h1 class="heading" @text="c.name"></h1>
+  <section class="section" webc:if="c.description">
+    <h2 class="heading2"><w-l>Description</w-l></h2>
+    <p class="description" @text="c.description"></p>
+    <div webc:for="s of c.signatures" webc:nokeep>
+      <code-example @tab="Unknown" @language="js" @text="s"></code-example>
+    </div>
+  </section>
+  <section class="section" webc:if="c.properties.length > 0">
+    <h2 class="heading2"><w-l>Properties</w-l></h2>
+
+    <w-reflection>hi</w-reflection>
+    <!-- <w-reflection-record
+      webc:for="p of c.properties"
+      :name="p.name"
+      :type="p.type"
+      :description="p.description"
+      :default="p.default"
+      :example="p.example"
+    ></w-reflection-record> -->
+
+    <table class="reflection">
+      <!-- todo: w-l -->
+      <caption class="sr-only">Properties for <code @text="c.name"></code></caption>
+      <thead class="sr-only">
+        <tr>
+          <th><w-l>Name, Type, Description</w-l></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr webc:for="p of c.properties">
+          <td class="reflection__record">
+            <div class="reflection__container">
+              <p class="reflection__meta">
+                <code class="reflection__tag reflection__tag_name" @text="p.name"></code>
+                <code class="reflection__tag" @text="p.type"></code>
+              </p>
+              <p class="reflection__description" @text="p.description"></p>
+              <p webc:if="p.default"><w-l>Default</w-l> <template @text="p.default" webc:nokeep></template></p>
+              <p webc:if="p.example"><w-l>Example</w-l> <template @text="p.example" webc:nokeep></template></p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</template>

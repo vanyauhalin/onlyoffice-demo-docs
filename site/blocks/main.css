@@ -3,9 +3,11 @@
 @import "./fonts/fonts.css";
 @import "./sr-only/sr-only.css";
 
-@import "./page/page.css";
-@import "./blank/blank.css";
-@import "./product/product.css";
+@import "../layouts/page/page.css";
+@import "../layouts/blank/blank.css";
+@import "../layouts/product/product.css";
 
 @import "./header/header.css";
 @import "./footer/footer.css";
+
+@import "./code-example/code-example.css";

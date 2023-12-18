@@ -1,0 +1,9 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <slot></slot>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -3,7 +3,7 @@ const definitions = require("@onlyoffice-demo-docs/document-builder/data/cell.js
 
 function setup() {
   const data = {
-    layout: "layouts/class/class.njk",
+    layout: "class/class.webc",
     pagination: {
       data: "items",
       size: 1,

@@ -1,0 +1,5 @@
+<script webc:type="render" webc:is="template" webc:nokeep webc:raw>
+function _() {
+  return this.slots.text.default
+}
+</script>

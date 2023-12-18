@@ -1,0 +1,7 @@
+---
+layout: product/product.webc
+---
+<!--
+@param {string} content
+-->
+<div @raw="content" webc:nokeep></div>

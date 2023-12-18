@@ -1,0 +1,73 @@
+---
+layout: page/page.webc
+---
+<!--
+@param {string} content
+@param {unknown[]} collections.products
+-->
+<div class="product">
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">logo</div>
+      <div class="header__nav">
+        <nav class="global-nav">
+          <div class="global-nav__container" webc:for="p of collections.products">
+            <!-- todo: global-nav__anchor_current -->
+            <a class="global-nav__anchor" :href="p.internal.url" @text="p.internal.data.title"></a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="product__main">
+    <div class="product__inner">
+      <nav class="product-nav">
+        <!-- <template webc:if="collections.products.length > 0" webc:nokeep> -->
+          <!-- webc:for="p of collections.products" -->
+          <div class="tree">
+            <ul class="tree__limb tree__limb_bole">
+              <li class="tree__branch tree__branch_bole" webc:for="p of collections.products[3].children">
+                <div class="tree__twig">
+                  <a class="tree__leaf tree__leaf_bole" :href="p.internal.url" @text="p.internal.data.title"></a>
+                </div>
+                <ul class="tree__limb" webc:if="p.children.length > 0">
+                  <li class="tree__branch" webc:for="p of p.children">
+                    <div class="tree__twig">
+                      <button class="tree__fruit" type="button" webc:if="p.children.length > 0">
+                        <svg fill="none" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path d="m4.531 2.5923 1e-6 18.815c0 1.3326 1.5415 2.0735 2.5821 1.241l11.76-9.4077c0.79529-0.63623 0.79529-1.8458 0-2.4821l-11.76-9.4077c-1.0406-0.8325-2.5821-0.091605-2.5821 1.241z" fill="#808080" />
+                        </svg>
+                      </button><a class="tree__leaf" :href="p.internal.url" @text="p.internal.data.title"></a>
+                    </div>
+                    <ul class="tree__limb" webc:if="p.children.length > 0">
+                      <li class="tree__branch" webc:for="p of p.children">
+                        <div class="tree__twig">
+                          <button class="tree__fruit" type="button" webc:if="p.children.length > 0">
+                            <svg fill="none" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="m4.531 2.5923 1e-6 18.815c0 1.3326 1.5415 2.0735 2.5821 1.241l11.76-9.4077c0.79529-0.63623 0.79529-1.8458 0-2.4821l-11.76-9.4077c-1.0406-0.8325-2.5821-0.091605-2.5821 1.241z" fill="#808080" />
+                            </svg>
+                          </button><a class="tree__leaf" :href="p.internal.url" @text="p.internal.data.title"></a>
+                        </div>
+                        <ul class="tree__limb" webc:if="p.children.length > 0">
+                          <li class="tree__branch" webc:for="p of p.children">
+                            <div class="tree__twig">
+                              <a class="tree__leaf" :href="p.internal.url" @text="p.internal.data.title"></a>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        <!-- </template> -->
+      </nav>
+      <main class="product__main2">
+        <div class="product__inner2" @raw="content"></div>
+      </main>
+    </div>
+  </div>
+  <w-footer></w-footer>
+</div>

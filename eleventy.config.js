@@ -3,38 +3,63 @@
  */
 
 const { tmpdir } = require("node:os")
+const { extname } = require("node:path")
 const { env } = require("node:process")
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const webc = require("@11ty/eleventy-plugin-webc")
 const esbuild = require("esbuild")
 const htmlMinifier = require("html-minifier-terser")
 const lightningcss = require("lightningcss")
-const { extname } = require("node:path")
-const { CodeExample } = require("./src/blocks/code-example/code-example.js")
+
+// todo: delete
+const { EleventyRenderPlugin } = require("@11ty/eleventy");
+
 
 /**
  * @param {UserConfig} c
  * @returns {UserConfig}
  */
 function config(c) {
-  c.addPassthroughCopy({ "src/blocks/fonts/static/*.{woff,woff2}": "." })
+  c.addPassthroughCopy({ "site/blocks/fonts/static/*.{woff,woff2}": "." })
 
   if (env.ELEVENTY_RUN_MODE === "build") {
     configureMarkup(c)
   }
 
-  configureStyles(c, ["./src/blocks/main.css"])
-  configureScripts(c, ["./src/blocks/main.js"])
+  configureStyles(c, ["./site/blocks/main.css"])
+  configureScripts(c, ["./site/blocks/main.js"])
 
   configureProducts(c)
 
-  c.addPairedShortcode("CodeExample", CodeExample)
+  c.addPlugin(syntaxHighlight)
+
+  c.addPlugin(EleventyRenderPlugin)
+
+  c.addPlugin(webc, {
+    components: [
+      "site/blocks/**/*.webc",
+      // "site/layouts/**/*.webc",
+      // "npm:@11ty/eleventy-plugin-syntaxhighlight/*.webc"
+    ],
+    before(p) {
+      p.bundlerMode = false
+    },
+    // useTransform: true
+  })
+
+  // c.addJavaScriptFunction("notEmpty", (a) => {
+  //   console.log("here", a.length > 0)
+  //   return a.length > 0
+  // })
 
   return {
-    // templateFormats: ["njk", "11ty.js", "md"],
+    templateFormats: ["njk", "md", "webc"],
     dir: {
       data: "_",
       includes: "",
-      input: "src",
-      output: "site"
+      input: "site",
+      layouts: "layouts",
+      output: "build"
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk"
